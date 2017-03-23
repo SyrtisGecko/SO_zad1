@@ -5,12 +5,14 @@ public class Task {
 
     private final int burstTime;
     private int processedTime;
+    private int waitingTime;
     private final int id;
 
     public Task(int id, int burstTime) {
         this.id = id;
         this.burstTime = burstTime;
         processedTime = 0;
+        waitingTime = 0;
     }
 
     public void displayTask() {
@@ -19,5 +21,13 @@ public class Task {
 
     public int getBurstTime() {
         return burstTime;
+    }
+
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
     }
 }

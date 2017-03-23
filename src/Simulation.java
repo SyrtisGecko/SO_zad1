@@ -25,6 +25,7 @@ public class Simulation {
     public void runSimulations() {
         fcfs = new SimFCFS(toBeProcessedList);
         fcfs.runSim();
+        fcfs.getAverageWaitingTime();
     }
 
     public void generateTasks() {

@@ -10,10 +10,15 @@ public class SimFCFS {
 
     ArrayList<Task> toBeProcessedList;
     Iterator iterator;
+    Task task;
+
+    private int[] avgWaiting;
 
     public SimFCFS(ArrayList<Task> toBeProcessedList) {
         this.toBeProcessedList = toBeProcessedList;
         currentTime = 0;
+
+        avgWaiting = new int[toBeProcessedList.size()];
     }
 
     public void runSim() {
@@ -22,16 +27,31 @@ public class SimFCFS {
         System.out.println("Current time: " + currentTime);
 
         iterator = toBeProcessedList.iterator();
+        int i = 0;
 
         while(iterator.hasNext()) {
-            Task t = (Task) iterator.next();
+            task = (Task) iterator.next();
+            task.setWaitingTime(currentTime);
+            avgWaiting[i++] = currentTime;
+            System.out.println("Waiting time: " + avgWaiting[i-1]);
             System.out.print("Processing: ");
-            t.displayTask();
-            currentTime += t.getBurstTime();
+            task.displayTask();
+            currentTime += task.getBurstTime();
             System.out.println("Current time: " + currentTime);
         }
 
         System.out.println("---- Ended running FCFS simulator ----");
         System.out.println("------------------------------------------------------");
+    }
+
+    public void getAverageWaitingTime() {
+        int sum = 0;
+
+        for(int i = 0; i < avgWaiting.length; i++) {
+            sum += avgWaiting[i];
+        }
+
+        System.out.println("Average waiting time for Tasks to be processed: " + (double)sum/avgWaiting.length);
+
     }
 }
