@@ -6,8 +6,6 @@ import java.util.Iterator;
  */
 public class SimFCFS {
 
-    private int currentTime;
-
     ArrayList<Task> toBeProcessedList;
     Iterator iterator;
     Task task;
@@ -16,12 +14,14 @@ public class SimFCFS {
 
     public SimFCFS(ArrayList<Task> toBeProcessedList) {
         this.toBeProcessedList = toBeProcessedList;
-        currentTime = 0;
 
         avgWaiting = new int[toBeProcessedList.size()];
     }
 
     public void runSim() {
+        int currentTime = 0;
+        int delays = 0;
+
         System.out.println("------------------------------------------------------");
         System.out.println("---- Started running FCFS simulator ----");
         System.out.println("Current time: " + currentTime);
@@ -31,9 +31,12 @@ public class SimFCFS {
 
         while(iterator.hasNext()) {
             task = (Task) iterator.next();
-            task.setWaitingTime(currentTime);
-            avgWaiting[i++] = currentTime;
-            System.out.println("Waiting time: " + avgWaiting[i-1]);
+            delays += task.getDelay();
+            task.setArrivalTime(delays);
+            task.setStartTime(currentTime);
+            task.setEndTime(currentTime + task.getBurstTime());
+            task.setWaitingTime(task.getStartTime() - task.getArrivalTime());
+            avgWaiting[i++] = task.getWaitingTime();
             System.out.print("Processing: ");
             task.displayTask();
             currentTime += task.getBurstTime();

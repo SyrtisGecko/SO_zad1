@@ -30,12 +30,14 @@ public class Simulation {
 
     public void generateTasks() {
         for(int i = 0; i < quantity; i++) {
-            toBeProcessedList.add(new Task(i, randTime()));
+            toBeProcessedList.add(new Task(i, randTime(Main.MAX_BURST_TIME), randTime(Main.MAX_DELAY)));
         }
+
+        ((Task)toBeProcessedList.get(0)).setDelay(0);
     }
 
-    private int randTime() {
-        return random.nextInt(100);
+    private int randTime(int n) {
+        return random.nextInt(n);
     }
 
     public void displayToBeProcessedList() {
