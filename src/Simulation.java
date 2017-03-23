@@ -11,6 +11,8 @@ public class Simulation {
     Iterator iterator;
     Random random;
 
+    SimFCFS fcfs;
+
     private int quantity;
 
     public Simulation(int quantity) {
@@ -18,6 +20,11 @@ public class Simulation {
 
         toBeProcessedList = new ArrayList<Task>(quantity);
         random = new Random();
+    }
+
+    public void runSimulations() {
+        fcfs = new SimFCFS(toBeProcessedList);
+        fcfs.runSim();
     }
 
     public void generateTasks() {

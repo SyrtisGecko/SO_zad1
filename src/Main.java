@@ -18,6 +18,7 @@ public class Main {
 
         simulation.generateTasks();
         simulation.displayToBeProcessedList();
+        simulation.runSimulations();
     }
 
 
