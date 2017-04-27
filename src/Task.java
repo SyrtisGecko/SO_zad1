@@ -72,5 +72,11 @@ public class Task {
         return arrivalTime;
     }
 
+    public int getProcessedTime() {
+        return processedTime;
+    }
 
+    public void setProcessedTime(int processedTime) {
+        this.processedTime = processedTime;
+    }
 }

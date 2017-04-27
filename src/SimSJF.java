@@ -21,16 +21,38 @@ public class SimSJF {
     public void runSim() {
         int currentTime = 0;
         int delays = 0;
+//        ArrayList<Task> processingQueue = new ArrayList<Task>(toBeProcessedList);
 
         System.out.println("------------------------------------------------------");
-        System.out.println("---- Started running FCFS simulator ----");
+        System.out.println("---- Started running SJF simulator ----");
         System.out.println("Current time: " + currentTime);
 
+//        int i = 0;
         for (Task task: toBeProcessedList) {
-            task.setArrivalTime(delays);
+//            processingQueue.add(toBeProcessedList.get(i++));
             delays += task.getDelay();
+            task.setArrivalTime(delays);
+            task.setStartTime(0);
+            task.setEndTime(0);
+            task.setWaitingTime(0);
+            task.setProcessedTime(0);
         }
 
+        ArrayList<Task> processingQueue = new ArrayList<>();
+        int index = 0;
+        processingQueue.add(toBeProcessedList.get(index));
+        Task currentTask;
+
+        for(int i = 0; i <toBeProcessedList.size(); i++) {
+            currentTask = processingQueue.get(index);
+
+
+            while() {
+
+            }
+        }
+
+/*
         iterator = toBeProcessedList.iterator();
         int i = 0;
 
@@ -49,7 +71,7 @@ public class SimSJF {
         }
 
         System.out.println("---- Ended running FCFS simulator ----");
-        System.out.println("------------------------------------------------------");
+        System.out.println("------------------------------------------------------");*/
     }
 
     public void getAverageWaitingTime() {
@@ -59,7 +81,7 @@ public class SimSJF {
             sum += avgWaitingFCFS[i];
         }
 
-        System.out.println("Average waiting time for Tasks to be processed: " + (double)sum/ avgWaitingFCFS.length);
+        System.out.println("Average waiting time for Tasks to be processed (SJF): " + (double)sum/ avgWaitingFCFS.length);
         System.out.println("------------------------------------------------------");
     }
 }

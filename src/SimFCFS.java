@@ -54,7 +54,7 @@ public class SimFCFS {
             sum += avgWaitingFCFS[i];
         }
 
-        System.out.println("Average waiting time for Tasks to be processed: " + (double)sum/ avgWaitingFCFS.length);
+        System.out.println("Average waiting time for Tasks to be processed (FCFS): " + (double)sum/ avgWaitingFCFS.length);
         System.out.println("------------------------------------------------------");
     }
 }

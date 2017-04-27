@@ -12,6 +12,7 @@ public class Simulation {
     Random random;
 
     SimFCFS fcfs;
+    SimSJF sjf;
 
     private int quantity;
 
@@ -26,6 +27,10 @@ public class Simulation {
         fcfs = new SimFCFS(toBeProcessedList);
         fcfs.runSim();
         fcfs.getAverageWaitingTime();
+
+        sjf = new SimSJF(toBeProcessedList);
+        sjf.runSim();
+
     }
 
     public void generateTasks() {
